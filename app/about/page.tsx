@@ -1,5 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { getServerSession } from 'next-auth/next'
+import type { Session } from 'next-auth'
+import Navigation from '@/components/navigation'
+import Footer from '@/components/footer'
+import { authOptions } from '@/lib/auth'
+
 
 const impactHighlights = [
   {
@@ -37,9 +43,20 @@ const values = [
   },
 ]
 
-export default function AboutPage() {
+
+
+
+
+export default async function AboutPage() {
+  const session: Session | null = await getServerSession(authOptions)
+  const isAuthenticated = Boolean(session?.user)
+  const primaryCtaHref = isAuthenticated ? '/farms' : '/signup'
+  const primaryCtaLabel = isAuthenticated ? 'Browse farms' : 'Start investing'
+
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
+      <Navigation />
+      <main>
       <section className="relative overflow-hidden border-b border-border bg-gradient-to-b from-primary/5 via-background to-background">
         <div className="max-w-6xl mx-auto px-4 py-20 sm:px-6 lg:px-8 lg:py-28 grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-center">
           <div className="space-y-6">
@@ -56,10 +73,10 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/signup"
+                href={primaryCtaHref}
                 className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
               >
-                Start investing
+                {primaryCtaLabel}
               </Link>
               <Link
                 href="/farms"
@@ -179,33 +196,10 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-gradient-to-b from-background to-muted/40">
-        <div className="max-w-5xl mx-auto px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24">
-          <p className="font-semibold text-primary">Ready to grow with us?</p>
-          <h2 className="mt-4 font-display text-3xl text-foreground sm:text-4xl">
-            Join investors who believe resilient food systems are the next frontier.
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
-            Create a free account to build watchlists, follow regional cohorts, and reserve allocations in upcoming
-            climate-smart farm raises.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link
-              href="/signup"
-              className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-            >
-              Create an account
-            </Link>
-            <Link
-              href="/login"
-              className="inline-flex items-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
-            >
-              Log in
-            </Link>
-          </div>
-        </div>
-      </section>
-    </main>
+     
+      </main>
+      <Footer />
+    </div>
   )
 }
 

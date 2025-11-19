@@ -1,4 +1,6 @@
 import Link from 'next/link'
+import Navigation from '@/components/navigation'
+import Footer from '@/components/footer'
 
 const steps = [
   {
@@ -41,7 +43,9 @@ const faqs = [
 
 export default function HowItWorksPage() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground">
+      <Navigation />
+      <main>
       <section className="border-b border-border bg-gradient-to-b from-primary/5 via-background to-background">
         <div className="max-w-5xl mx-auto px-4 py-20 text-center sm:px-6 lg:px-8 lg:py-24 space-y-6">
           <span className="inline-flex items-center rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
@@ -140,32 +144,10 @@ export default function HowItWorksPage() {
         </div>
       </section>
 
-      <section className="border-t border-border bg-gradient-to-b from-background to-muted/40">
-        <div className="max-w-4xl mx-auto px-4 py-16 text-center sm:px-6 lg:px-8 lg:py-24 space-y-6">
-          <h2 className="font-display text-3xl text-foreground sm:text-4xl">
-            Ready to fund climate-smart farms?
-          </h2>
-          <p className="text-muted-foreground">
-            Create a free Agrivest account in minutes, verify your identity, and start backing farmers who
-            regenerate soil, water, and community wealth.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link
-              href="/signup"
-              className="inline-flex items-center rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition hover:bg-primary/90"
-            >
-              Create an account
-            </Link>
-            <Link
-              href="/login"
-              className="inline-flex items-center rounded-full border border-border px-6 py-3 text-sm font-semibold text-foreground transition hover:bg-muted"
-            >
-              Log in
-            </Link>
-          </div>
-        </div>
-      </section>
-    </main>
+     
+      </main>
+      <Footer />
+    </div>
   )
 }
 

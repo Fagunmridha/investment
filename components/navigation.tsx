@@ -16,6 +16,8 @@ import { useRouter } from 'next/navigation'
 export default function Navigation() {
   const { data: session } = useSession()
   const router = useRouter()
+  const primaryCtaHref = session?.user ? '/farms' : '/signup'
+  const primaryCtaLabel = session?.user ? 'Go to Farms' : 'Get Started'
 
   const initials = (session?.user?.name || session?.user?.email || 'User')
     .split(' ')
@@ -71,7 +73,7 @@ export default function Navigation() {
                   <Link href="/login">Login</Link>
                 </Button>
                 <Button asChild className="bg-primary hover:bg-primary/90">
-                  <Link href="/signup">Get Started</Link>
+                  <Link href={primaryCtaHref}>{primaryCtaLabel}</Link>
                 </Button>
               </>
             ) : (
