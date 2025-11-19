@@ -26,7 +26,7 @@ export default async function LoginPage() {
               <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
                 <Leaf className="w-5 h-5 text-primary-foreground" />
               </div>
-              <span className="font-bold text-lg text-foreground">iFarmer</span>
+              <span className="font-bold text-lg text-foreground">AgriVest</span>
             </div>
             <CardTitle className="text-2xl">Welcome Back</CardTitle>
             <CardDescription>Login to your investment account</CardDescription>
