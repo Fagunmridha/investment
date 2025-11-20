@@ -55,11 +55,11 @@ export default function FarmManagementPage() {
 
   return (
     <div className="flex min-h-screen bg-background">
-      {/* <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} /> */}
+     
       
       <main className="flex-1 overflow-auto p-6 lg:p-8">
         <div className="max-w-7xl mx-auto space-y-8">
-          {/* Header */}
+         
           <div className="flex justify-between items-start md:items-center gap-4">
             <div>
               <h1 className="text-3xl font-bold text-foreground mb-2">Farm Management</h1>
@@ -71,7 +71,7 @@ export default function FarmManagementPage() {
             </Button>
           </div>
 
-          {/* Add Farm Form */}
+        
           {showAddFarm && (
             <Card>
               <CardHeader>
@@ -130,7 +130,7 @@ export default function FarmManagementPage() {
             </Card>
           )}
 
-          {/* Search */}
+         
           <div>
             <Input
               placeholder="Search farms by name or owner..."
@@ -140,7 +140,6 @@ export default function FarmManagementPage() {
             />
           </div>
 
-          {/* Farms List */}
           <div className="grid grid-cols-1 gap-4">
             {filteredFarms.map((farm) => {
               const progressPercent = (farm.collected / farm.targetFunding) * 100
