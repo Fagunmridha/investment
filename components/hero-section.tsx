@@ -2,66 +2,146 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sprout } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import { motion, Variants } from "framer-motion";
 
 export default function HeroSection() {
   const router = useRouter();
-  const { data: session } = useSession(); // NEXT AUTH SESSION
+  const { data: session } = useSession();
 
   const handleStartInvesting = () => {
     if (session?.user) {
-      router.push("/farms"); // Logged-in → Farms page
+      router.push("/farms");
     } else {
-      router.push("/signup"); // Not logged-in → Signup page
+      router.push("/signup");
     }
   };
 
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: [0.42, 0, 0.58, 1], // ease-in-out cubic bezier
+      },
+    },
+  };
+
   return (
-    <section className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 pointer-events-none" />
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 pb-32">
+      {/* Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background pointer-events-none" />
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-3xl" />
+        <div className="absolute top-[20%] -right-[10%] w-[40%] h-[40%] rounded-full bg-accent/10 blur-3xl" />
+      </div>
 
-      <div className="max-w-4xl mx-auto text-center relative z-10">
-        <div className="mb-6 inline-block px-4 py-2 bg-secondary rounded-full border border-primary/20">
-          <span className="text-sm font-medium text-primary">
-            Invest in Agriculture, Earn Profit
-          </span>
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="text-center max-w-5xl mx-auto"
+        >
+          <motion.div variants={itemVariants} className="mb-8 flex justify-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
+              <Sprout className="w-4 h-4" />
+              <span>Sustainable Agriculture Investment Platform</span>
+            </div>
+          </motion.div>
 
-        <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 leading-tight text-balance">
-          Invest in Sustainable <span className="text-primary">Agriculture</span> & Earn Returns
-        </h1>
-
-        <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed text-pretty">
-          Support local farmers and sustainable farming practices while earning guaranteed returns. Start investing from as little as $100.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-          
-          {/* ⭐ Updated Button (with NextAuth session logic) */}
-          <Button
-            size="lg"
-            onClick={handleStartInvesting}
-            className="bg-primary hover:bg-primary/90 text-lg flex items-center gap-2"
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl md:text-7xl font-display font-bold text-foreground mb-8 leading-[1.1] tracking-tight text-balance"
           >
-            Start Investing
-            <ArrowRight className="w-5 h-5" />
-          </Button>
+            Grow Your Wealth with <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">
+              Nature's Best Assets
+            </span>
+          </motion.h1>
 
-          <Button size="lg" variant="outline" asChild className="text-lg">
-            <Link href="/farms">Browse Farms</Link>
-          </Button>
-        </div>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed text-pretty"
+          >
+            Join thousands of investors supporting sustainable farming. Earn guaranteed returns while making a positive impact on the planet's future.
+          </motion.p>
 
-        <div className="relative h-96 md:h-[500px] rounded-2xl overflow-hidden bg-secondary border border-border shadow-lg">
-          <img
-            src="/farmers-in-lush-green-agricultural-field-with-crop.jpg"
-            alt="Agricultural landscape"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent"></div>
-        </div>
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-col sm:flex-row gap-5 justify-center mb-20"
+          >
+            <Button
+              size="lg"
+              onClick={handleStartInvesting}
+              className="bg-primary hover:bg-primary/90 text-lg h-14 px-8 rounded-full shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300"
+            >
+              Start Investing Now
+              <ArrowRight className="w-5 h-5 ml-2" />
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              asChild
+              className="text-lg h-14 px-8 rounded-full border-2 hover:bg-secondary/50 transition-all duration-300"
+            >
+              <Link href="/farms">Explore Farms</Link>
+            </Button>
+          </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="relative rounded-3xl overflow-hidden shadow-2xl border border-border/50 bg-card"
+          >
+            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10" />
+            <img
+              src="/farmers-in-lush-green-agricultural-field-with-crop.jpg"
+              alt="Sustainable farming landscape"
+              className="w-full h-[400px] md:h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
+            />
+
+            {/* Floating Stats Cards */}
+            <motion.div
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1, duration: 0.8 }}
+              className="absolute bottom-8 left-8 z-20 bg-background/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-border/50 hidden md:block"
+            >
+              <div className="flex flex-col">
+                <span className="text-sm text-muted-foreground font-medium">Total Invested</span>
+                <span className="text-3xl font-bold text-primary">$2.5M+</span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ x: 50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="absolute bottom-8 right-8 z-20 bg-background/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-border/50 hidden md:block"
+            >
+              <div className="flex flex-col items-end">
+                <span className="text-sm text-muted-foreground font-medium">Happy Investors</span>
+                <span className="text-3xl font-bold text-foreground">5,000+</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
