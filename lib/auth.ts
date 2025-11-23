@@ -25,26 +25,36 @@ export const authOptions: NextAuthOptions = {
           throw new Error('Email and password are required')
         }
 
-        const user = await prisma.user.findUnique({
-          where: { email: credentials.email.toLowerCase() },
-        })
+        try {
+          const user = await prisma.user.findUnique({
+            where: { email: credentials.email.toLowerCase() },
+          })
 
-        if (!user) {
-          throw new Error('Invalid credentials')
-        }
+          if (!user) {
+            throw new Error('Invalid credentials')
+          }
 
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
+          const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
 
-        if (!isPasswordValid) {
-          throw new Error('Invalid credentials')
-        }
+          if (!isPasswordValid) {
+            throw new Error('Invalid credentials')
+          }
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.fullName,
-          role: user.role,
-          kycStatus: user.kycStatus,
+          return {
+            id: user.id,
+            email: user.email,
+            name: user.fullName,
+            role: user.role,
+            kycStatus: user.kycStatus,
+          }
+        } catch (error: any) {
+          // Handle database connection errors
+          if (error?.code === 'P1001' || error?.message?.includes('Can\'t reach database server')) {
+            console.error('Database connection error:', error.message)
+            throw new Error('Database connection failed. Please check your DATABASE_URL and ensure the database server is running.')
+          }
+          // Re-throw other errors
+          throw error
         }
       },
     }),

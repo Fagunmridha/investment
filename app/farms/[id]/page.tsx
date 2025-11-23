@@ -42,10 +42,10 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
   return (
     <main className="min-h-screen bg-background flex flex-col">
       <Navigation />
-      
+
       <section className="flex-1 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Hero Image */}
+       
           <div className="relative h-96 rounded-2xl overflow-hidden mb-8 shadow-lg">
             <img
               src={farmData.image || "/placeholder.svg"}
@@ -55,7 +55,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
+          
             <div className="lg:col-span-2 space-y-8">
               <div>
                 <div className="flex items-center gap-2 mb-2">
@@ -70,7 +70,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </p>
               </div>
 
-              {/* Key Metrics */}
+            
               <div className="grid grid-cols-3 gap-4">
                 <Card>
                   <CardContent className="pt-6">
@@ -98,9 +98,8 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                   <CardContent className="pt-6">
                     <div className="text-center">
                       <p className="text-muted-foreground text-sm mb-2">Risk Level</p>
-                      <p className={`text-3xl font-bold flex items-center justify-center gap-1 ${
-                        farmData.riskLevel === 'Low' ? 'text-green-600' : 'text-yellow-600'
-                      }`}>
+                      <p className={`text-3xl font-bold flex items-center justify-center gap-1 ${farmData.riskLevel === 'Low' ? 'text-green-600' : 'text-yellow-600'
+                        }`}>
                         <AlertCircle className="w-6 h-6" />
                         {farmData.riskLevel}
                       </p>
@@ -109,7 +108,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </Card>
               </div>
 
-              {/* Description */}
+              
               <Card>
                 <CardHeader>
                   <CardTitle>About This Farm</CardTitle>
@@ -121,7 +120,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </CardContent>
               </Card>
 
-              {/* Investment Progress */}
+           
               <Card>
                 <CardHeader>
                   <CardTitle>Investment Progress</CardTitle>
@@ -143,7 +142,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </CardContent>
               </Card>
 
-              {/* Performance Chart */}
+            
               <Card>
                 <CardHeader>
                   <CardTitle>Projected vs Actual Returns</CardTitle>
@@ -220,9 +219,11 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                     </div>
                   </div>
 
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-lg h-10">
-                    Invest Now
-                  </Button>
+                  <Link href={`/invest/${params.id}`} className="block">
+                    <Button className="w-full bg-primary hover:bg-primary/90 text-lg h-10">
+                      Invest Now
+                    </Button>
+                  </Link>
 
                   <p className="text-xs text-muted-foreground text-center">
                     By investing, you agree to our <Link href="/terms" className="text-primary hover:underline">Terms</Link>
@@ -233,7 +234,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
           </div>
         </div>
       </section>
-      
+
       <Footer />
     </main>
   )

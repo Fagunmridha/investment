@@ -199,7 +199,7 @@ export default function FeaturedFarms() {
 
                       <Button className="w-full mt-4 bg-primary hover:bg-primary/90 group-hover:translate-y-0 transition-all" asChild>
                         <Link href={`/farms/${farm.id}`} className="flex items-center justify-center gap-2">
-                          Invest Now <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                          View Details <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                         </Link>
                       </Button>
                     </div>
