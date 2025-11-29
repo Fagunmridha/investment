@@ -36,32 +36,40 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-foreground mb-6 text-lg">Platform</h4>
             <ul className="space-y-4">
-              {['Browse Farms', 'How It Works', 'Pricing', 'Success Stories'].map((item) => (
+              {['Browse Farms', 'How It Works', 'Pricing', 'Success Stories'].map((item) => {
+                const slug = item.toLowerCase().replace(/\s+/g, '-')
+                const href = item === 'Browse Farms' ? '/farms' : `/${slug}`
+
+                return (
                 <li key={item}>
                   <Link
-                    href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={href}
                     className="text-muted-foreground hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block"
                   >
                     {item}
                   </Link>
                 </li>
-              ))}
+              )})}
             </ul>
           </div>
 
           <div>
             <h4 className="font-bold text-foreground mb-6 text-lg">Company</h4>
             <ul className="space-y-4">
-              {['About Us', 'Blog', 'Careers', 'Contact'].map((item) => (
+              {['About Us', 'Blog', 'Careers', 'Contact'].map((item) => {
+                const slug = item.toLowerCase().replace(/\s+/g, '-')
+                const href = item === 'About Us' ? '/about' : `/${slug}`
+
+                return (
                 <li key={item}>
                   <Link
-                    href={`/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    href={href}
                     className="text-muted-foreground hover:text-primary hover:translate-x-1 transition-all duration-300 inline-block"
                   >
                     {item}
                   </Link>
                 </li>
-              ))}
+              )})}
             </ul>
           </div>
 

@@ -45,7 +45,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
     <main className="min-h-screen bg-background flex flex-col">
       <Navigation />
 
-      {/* Hero Section with Overlay */}
+    
       <section className="relative">
         <div className="relative h-[500px] md:h-[600px] overflow-hidden">
           <div className="absolute inset-0">
@@ -58,7 +58,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
             <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/40" />
           </div>
 
-          {/* Content Overlay */}
+         
           <div className="relative z-10 h-full flex items-end">
             <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-12">
               <div className="max-w-3xl">
@@ -87,9 +87,9 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
       <section className="flex-1 py-12 px-4 sm:px-6 lg:px-8 -mt-20 relative z-20">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
+        
             <div className="lg:col-span-2 space-y-8">
-              {/* Key Metrics - Redesigned */}
+            
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card className="border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 hover:shadow-xl transition-all duration-300 hover:scale-105">
                   <CardContent className="pt-6">
@@ -148,7 +148,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </Card>
               </div>
 
-              {/* About Section - Enhanced */}
+             
               <Card className="border-2 border-border/50 overflow-hidden">
                 <div className="bg-gradient-to-r from-primary/5 via-transparent to-primary/5 p-6 border-b border-border/50">
                   <div className="flex items-center gap-3">
@@ -173,7 +173,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </CardContent>
               </Card>
 
-              {/* Investment Progress - Redesigned */}
+             
               <Card className="border-2 border-border/50 overflow-hidden">
                 <div className="bg-gradient-to-r from-primary/5 via-transparent to-primary/5 p-6 border-b border-border/50">
                   <div className="flex items-center justify-between">
@@ -220,7 +220,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </CardContent>
               </Card>
 
-              {/* Performance Chart - Enhanced */}
+              
               <Card className="border-2 border-border/50 overflow-hidden">
                 <div className="bg-gradient-to-r from-primary/5 via-transparent to-primary/5 p-6 border-b border-border/50">
                   <div className="flex items-center gap-3">
@@ -274,7 +274,6 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                 </CardContent>
               </Card>
 
-              {/* FAQ - Enhanced */}
               <Card className="border-2 border-border/50 overflow-hidden">
                 <div className="bg-gradient-to-r from-primary/5 via-transparent to-primary/5 p-6 border-b border-border/50">
                   <div className="flex items-center gap-3">
@@ -318,7 +317,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
               </Card>
             </div>
 
-            {/* Investment Sidebar - Redesigned */}
+           
             <div className="lg:col-span-1">
               <Card className="sticky top-24 border-2 border-primary/20 bg-gradient-to-br from-background via-background to-primary/5 shadow-2xl">
                 <CardHeader className="pb-4">
@@ -352,7 +351,7 @@ export default function FarmDetailsPage({ params }: { params: { id: string } }) 
                     </p>
                   </div>
 
-                  {/* Investment Summary - Enhanced */}
+                 
                   <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-secondary/30 p-6 rounded-xl border-2 border-primary/20 space-y-4">
                     <div className="flex items-center gap-2 mb-4">
                       <Sparkles className="w-4 h-4 text-primary" />
