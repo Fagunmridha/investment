@@ -58,10 +58,12 @@ export default function SignupPage() {
         }),
       })
 
-      const data = await res.json()
+      const data = await res.json().catch(() => ({ error: 'Unable to parse server response' }))
 
       if (!res.ok) {
-        throw new Error(data.error || 'Unable to create account')
+        // Display detailed error message from API
+        const errorMessage = data.error || data.message || 'Unable to create account'
+        throw new Error(errorMessage)
       }
 
       setIsComplete(true)

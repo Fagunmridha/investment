@@ -35,3 +35,21 @@ enum KycStatus {
   VERIFIED
   REJECTED
 }
+
+model Farm {
+  id             String   @id @default(cuid())
+  name           String
+  category       String
+  description    String?
+  location       String?
+  owner          String?
+  roi            Float
+  durationMonths Int
+  targetFunding  Float
+  collectedAmount Float   @default(0)
+  riskLevel      String?
+  status         String   @default("active")
+  imageUrl       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
