@@ -32,24 +32,28 @@ export default function AdminPage() {
       <AdminSidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       <main className="flex-1 flex flex-col overflow-hidden">
         <header className="sticky top-0 z-10 border-b border-border/60 bg-background/80 backdrop-blur-xl">
-          <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+          <div className="mx-auto flex w-full max-w-7xl items-start gap-3 sm:items-center justify-between px-4 py-3 sm:py-4 sm:px-6 lg:px-8">
             <div>
-              <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground/80">Control Center</p>
-              <h1 className="text-2xl font-semibold text-foreground sm:text-3xl">{activeSection.label}</h1>
-              <p className="text-sm text-muted-foreground">{activeSection.subline}</p>
+              <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground/80">Control Center</p>
+              <h1 className="text-xl sm:text-2xl font-semibold text-foreground sm:text-3xl">{activeSection.label}</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground">{activeSection.subline}</p>
             </div>
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="icon" className="rounded-full border border-border/80 text-muted-foreground hover:text-foreground">
+            <div className="flex items-center gap-1 sm:gap-2">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="rounded-full border border-border/80 text-muted-foreground hover:text-foreground"
+              >
                 <Bell className="h-4 w-4" />
               </Button>
-              <Button className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold hover:bg-primary/90">
+              <Button className="hidden sm:inline-flex items-center gap-2 rounded-full bg-primary px-3 sm:px-4 text-xs sm:text-sm font-semibold hover:bg-primary/90">
                 <Sparkles className="h-4 w-4" />
                 Generate report
               </Button>
             </div>
           </div>
         </header>
-        <section className="flex-1 overflow-y-auto px-4 py-6 sm:px-6 lg:px-8">
+        <section className="flex-1 overflow-y-auto px-3 py-4 sm:px-6 sm:py-6 lg:px-8">
           <div className="mx-auto w-full max-w-7xl">
             {activeSection.component}
           </div>

@@ -43,7 +43,7 @@ export default function HeroSection() {
   };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 pb-32">
+    <section className="relative min-h-[80vh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden pt-20 pb-20 sm:pb-32">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-background to-background pointer-events-none" />
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -67,7 +67,7 @@ export default function HeroSection() {
 
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-7xl font-display font-bold text-foreground mb-8 leading-[1.1] tracking-tight text-balance"
+            className="text-3xl sm:text-5xl md:text-7xl font-display font-bold text-foreground mb-4 sm:mb-8 leading-[1.15] tracking-tight text-balance"
           >
             Grow Your Wealth with <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60">
@@ -77,7 +77,7 @@ export default function HeroSection() {
 
           <motion.p
             variants={itemVariants}
-            className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed text-pretty"
+            className="text-base sm:text-lg md:text-2xl text-muted-foreground mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed text-pretty"
           >
             Join thousands of investors supporting sustainable farming. Earn guaranteed returns while making a positive impact on the planet's future.
           </motion.p>
@@ -89,7 +89,7 @@ export default function HeroSection() {
             <Button
               size="lg"
               onClick={handleStartInvesting}
-              className="bg-primary hover:bg-primary/90 text-lg h-14 px-8 rounded-full shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300"
+              className="bg-primary hover:bg-primary/90 text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 rounded-full shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1 transition-all duration-300"
             >
               Start Investing Now
               <ArrowRight className="w-5 h-5 ml-2" />
@@ -99,7 +99,7 @@ export default function HeroSection() {
               size="lg"
               variant="outline"
               asChild
-              className="text-lg h-14 px-8 rounded-full border-2 hover:bg-secondary/50 transition-all duration-300"
+              className="text-base sm:text-lg h-12 sm:h-14 px-6 sm:px-8 rounded-full border-2 hover:bg-secondary/50 transition-all duration-300"
             >
               <Link href="/farms">Explore Farms</Link>
             </Button>
@@ -113,7 +113,7 @@ export default function HeroSection() {
             <img
               src="/farmers-in-lush-green-agricultural-field-with-crop.jpg"
               alt="Sustainable farming landscape"
-              className="w-full h-[400px] md:h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
+              className="w-full h-[260px] sm:h-[400px] md:h-[600px] object-cover transform hover:scale-105 transition-transform duration-700"
             />
 
             {/* Floating Stats Cards */}

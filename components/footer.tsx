@@ -7,9 +7,9 @@ import { Input } from '@/components/ui/input'
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary/30 border-t border-border pt-16 pb-8 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-secondary/30 border-t border-border pt-12 sm:pt-16 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-12 mb-12 sm:mb-16">
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2 group">
               <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 transition-transform group-hover:scale-105">
@@ -23,7 +23,7 @@ export default function Footer() {
             <div className="flex gap-4">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
                 <a
-                  key={i}
+               key={i}
                   href="#"
                   className="w-10 h-10 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary hover:bg-primary/5 transition-all duration-300"
                 >
@@ -34,7 +34,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-foreground mb-6 text-lg">Platform</h4>
+            <h4 className="font-bold text-foreground mb-4 sm:mb-6 text-base sm:text-lg">Platform</h4>
             <ul className="space-y-4">
               {['Browse Farms', 'How It Works', 'Pricing', 'Success Stories'].map((item) => {
                 const slug = item.toLowerCase().replace(/\s+/g, '-')
@@ -54,7 +54,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-foreground mb-6 text-lg">Company</h4>
+            <h4 className="font-bold text-foreground mb-4 sm:mb-6 text-base sm:text-lg">Company</h4>
             <ul className="space-y-4">
               {['About Us', 'Blog', 'Careers', 'Contact'].map((item) => {
                 const slug = item.toLowerCase().replace(/\s+/g, '-')
@@ -74,8 +74,10 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-foreground mb-6 text-lg">Stay Updated</h4>
-            <p className="text-muted-foreground mb-4">Subscribe to our newsletter for the latest investment opportunities.</p>
+            <h4 className="font-bold text-foreground mb-4 sm:mb-6 text-base sm:text-lg">Stay Updated</h4>
+            <p className="text-muted-foreground mb-3 sm:mb-4">
+              Subscribe to our newsletter for the latest investment opportunities.
+            </p>
             <form className="space-y-3" onSubmit={(e) => e.preventDefault()}>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />

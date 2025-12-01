@@ -43,7 +43,7 @@ export default function Navigation() {
       className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50 supports-[backdrop-filter]:bg-background/60"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-16 sm:h-20 gap-3">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg shadow-primary/20 transition-transform group-hover:scale-105">
               <Leaf className="w-6 h-6 text-primary-foreground" />
@@ -51,7 +51,7 @@ export default function Navigation() {
             <span className="font-display font-bold text-xl tracking-tight text-foreground group-hover:text-primary transition-colors">AgriVest</span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {[
               { label: 'Browse Farms', href: '/farms' },
               { label: 'How It Works', href: '/how-it-works' },
@@ -68,13 +68,20 @@ export default function Navigation() {
             ))}
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {!session?.user ? (
               <>
-                <Button variant="ghost" asChild className="text-base font-medium hover:text-primary hover:bg-primary/5">
+                <Button
+                  variant="ghost"
+                  asChild
+                  className="text-sm sm:text-base font-medium hover:text-primary hover:bg-primary/5"
+                >
                   <Link href="/login">Login</Link>
                 </Button>
-                <Button asChild className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25 text-base px-6 rounded-full transition-all hover:scale-105">
+                <Button
+                  asChild
+                  className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary/25 text-sm sm:text-base px-4 sm:px-6 rounded-full transition-all hover:scale-105"
+                >
                   <Link href={primaryCtaHref}>{primaryCtaLabel}</Link>
                 </Button>
               </>

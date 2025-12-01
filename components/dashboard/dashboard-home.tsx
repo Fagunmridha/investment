@@ -44,16 +44,20 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
   const completedInvestments = 2
 
   return (
-    <div className="p-6 lg:p-8 space-y-8">
+    <div className="p-4 sm:p-6 lg:p-8 space-y-6 sm:space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-foreground mb-2">Welcome back, {user.fullName}!</h1>
-        <p className="text-muted-foreground">Here's your investment portfolio overview</p>
+        <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-1 sm:mb-2">
+          Welcome back, {user.fullName}!
+        </h1>
+        <p className="text-sm sm:text-base text-muted-foreground">
+          Here's your investment portfolio overview
+        </p>
       </div>
 
       {/* User Info */}
       <Card>
-        <CardContent className="pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <CardContent className="pt-4 sm:pt-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 sm:gap-6">
           <div className="space-y-1">
             <p className="text-sm text-muted-foreground">Signed in as</p>
             <div className="flex items-center gap-2 text-foreground font-medium">
@@ -61,7 +65,7 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
               {user.email}
             </div>
           </div>
-          <div className="flex items-center gap-2 rounded-full bg-secondary px-4 py-2">
+          <div className="flex items-center gap-2 rounded-full bg-secondary px-3 sm:px-4 py-2">
             <ShieldCheck className="w-4 h-4 text-primary" />
             <span className="text-sm font-semibold text-foreground">
               KYC Status: {user.kycStatus}
@@ -71,13 +75,15 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
       </Card>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
         <Card>
-          <CardContent className="pt-6">
+          <CardContent className="pt-4 sm:pt-6">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-muted-foreground text-sm mb-2">Total Invested</p>
-                <p className="text-3xl font-bold text-foreground">${totalInvested.toLocaleString()}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm mb-1 sm:mb-2">Total Invested</p>
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">
+                  ${totalInvested.toLocaleString()}
+                </p>
               </div>
               <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
                 <DollarSign className="w-6 h-6 text-primary" />
@@ -87,11 +93,15 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
         </Card>
 
         <Card>
-          <CardContent className="pt-6">
+          <CardContent className="pt-4 sm:pt-6">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-muted-foreground text-sm mb-2">Total Earned</p>
-                <p className="text-3xl font-bold text-green-600">${totalEarned.toLocaleString()}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm mb-1 sm:mb-2">
+                  Total Earned
+                </p>
+                <p className="text-2xl sm:text-3xl font-bold text-green-600">
+                  ${totalEarned.toLocaleString()}
+                </p>
               </div>
               <div className="w-10 h-10 rounded-full bg-green-600/20 flex items-center justify-center">
                 <TrendingUp className="w-6 h-6 text-green-600" />
@@ -101,11 +111,13 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
         </Card>
 
         <Card>
-          <CardContent className="pt-6">
+          <CardContent className="pt-4 sm:pt-6">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-muted-foreground text-sm mb-2">Active Investments</p>
-                <p className="text-3xl font-bold text-foreground">{activeInvestments}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm mb-1 sm:mb-2">
+                  Active Investments
+                </p>
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">{activeInvestments}</p>
               </div>
               <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
                 <Clock className="w-6 h-6 text-primary" />
@@ -115,11 +127,15 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
         </Card>
 
         <Card>
-          <CardContent className="pt-6">
+          <CardContent className="pt-4 sm:pt-6">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-muted-foreground text-sm mb-2">Completed</p>
-                <p className="text-3xl font-bold text-foreground">{completedInvestments}</p>
+                <p className="text-muted-foreground text-xs sm:text-sm mb-1 sm:mb-2">
+                  Completed
+                </p>
+                <p className="text-2xl sm:text-3xl font-bold text-foreground">
+                  {completedInvestments}
+                </p>
               </div>
               <div className="w-10 h-10 rounded-full bg-green-600/20 flex items-center justify-center">
                 <CheckCircle2 className="w-6 h-6 text-green-600" />
@@ -130,15 +146,17 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
       </div>
 
       {/* Charts Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Monthly Earnings Chart */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle>Monthly Earnings</CardTitle>
-            <CardDescription>Your earnings trend over time</CardDescription>
+            <CardTitle className="text-base sm:text-lg">Monthly Earnings</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">
+              Your earnings trend over time
+            </CardDescription>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="pt-2 sm:pt-4">
+            <ResponsiveContainer width="100%" height={240}>
               <AreaChart data={monthlyEarningsData}>
                 <defs>
                   <linearGradient id="colorEarnings" x1="0" y1="0" x2="0" y2="1">
@@ -159,12 +177,17 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
         {/* Portfolio Breakdown */}
         <Card>
           <CardHeader>
-            <CardTitle>Portfolio Breakdown</CardTitle>
-            <CardDescription>Your investment allocation</CardDescription>
+            <CardTitle className="text-base sm:text-lg">Portfolio Breakdown</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">
+              Your investment allocation
+            </CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 sm:space-y-4">
             {investmentBreakdown.map((investment, index) => (
-              <div key={index} className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg">
+              <div
+                key={index}
+                className="flex items-center justify-between p-3 bg-secondary/50 rounded-lg"
+              >
                 <div>
                   <p className="font-medium text-sm text-foreground">{investment.name}</p>
                   <p className="text-xs text-muted-foreground">{investment.roi}% ROI</p>
@@ -179,25 +202,39 @@ export function DashboardHome({ user }: { user: DashboardUser }) {
       {/* Active Investments */}
       <Card>
         <CardHeader>
-          <CardTitle>Active Investments</CardTitle>
-          <CardDescription>Your current farming investments</CardDescription>
+          <CardTitle className="text-base sm:text-lg">Active Investments</CardTitle>
+          <CardDescription className="text-xs sm:text-sm">
+            Your current farming investments
+          </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
             {investmentBreakdown.map((investment, index) => (
-              <div key={index} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-secondary/50 transition">
+              <div
+                key={index}
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 border border-border rounded-lg hover:bg-secondary/50 transition"
+              >
                 <div>
-                  <p className="font-medium text-foreground">{investment.name}</p>
-                  <p className="text-sm text-muted-foreground">Invested: ${investment.value.toLocaleString()}</p>
+                  <p className="font-medium text-sm sm:text-base text-foreground">
+                    {investment.name}
+                  </p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    Invested: ${investment.value.toLocaleString()}
+                  </p>
                 </div>
-                <div className="text-right">
-                  <p className="font-bold text-primary">{investment.roi}% ROI</p>
-                  <p className="text-sm text-muted-foreground">Monthly return: ${(investment.value * investment.roi / 100 / 12).toLocaleString()}</p>
+                <div className="text-left sm:text-right">
+                  <p className="font-bold text-primary text-sm sm:text-base">
+                    {investment.roi}% ROI
+                  </p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">
+                    Monthly return:{' '}
+                    {(investment.value * investment.roi / 100 / 12).toLocaleString()}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
-          <Button asChild className="w-full mt-6 bg-primary hover:bg-primary/90">
+          <Button asChild className="w-full mt-4 sm:mt-6 bg-primary hover:bg-primary/90">
             <Link href="/farms">Invest More</Link>
           </Button>
         </CardContent>

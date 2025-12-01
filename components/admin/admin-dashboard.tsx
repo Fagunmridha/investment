@@ -88,17 +88,19 @@ export function AdminDashboard() {
   ]
 
   return (
-    <div className="space-y-8 rounded-3xl border border-border/60 bg-card/80 p-6 shadow-xl backdrop-blur-xl lg:p-8">
-      <div className="grid gap-6 lg:grid-cols-[1.4fr_0.6fr]">
+    <div className="space-y-6 sm:space-y-8 rounded-3xl border border-border/60 bg-card/80 p-4 sm:p-6 shadow-xl backdrop-blur-xl lg:p-8">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-[1.4fr_0.6fr]">
         <Card className="border-0 bg-gradient-to-br from-primary/15 via-background to-background">
           <CardHeader className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-col sm:flex-row sm:flex-wrap sm:items-center sm:justify-between gap-3">
       <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground/80">Live posture</p>
-                <CardTitle className="text-2xl font-semibold text-foreground">Operational health</CardTitle>
-                <CardDescription>Telemetry, capital flow, and workforce signals for the last {range}.</CardDescription>
+                <p className="text-[10px] sm:text-xs uppercase tracking-[0.3em] text-muted-foreground/80">Live posture</p>
+                <CardTitle className="text-xl sm:text-2xl font-semibold text-foreground">Operational health</CardTitle>
+                <CardDescription className="text-xs sm:text-sm">
+                  Telemetry, capital flow, and workforce signals for the last {range}.
+                </CardDescription>
               </div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-border/70 bg-card/70 px-2 py-1 text-xs font-semibold text-muted-foreground">
+              <div className="inline-flex items-center gap-1 sm:gap-2 rounded-full border border-border/70 bg-card/70 px-1.5 sm:px-2 py-1 text-[11px] sm:text-xs font-semibold text-muted-foreground self-start">
                 {(['7d', '30d', '90d'] as const).map(option => (
                   <button
                     key={option}
@@ -112,16 +114,16 @@ export function AdminDashboard() {
                 ))}
               </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="rounded-2xl border border-primary/40 bg-background/60 p-4">
-                <p className="text-sm text-muted-foreground">Telemetry uptime</p>
-                <p className="text-3xl font-semibold text-foreground">99.2%</p>
-                <p className="text-xs text-green-500 mt-1">+0.3% vs last week</p>
+            <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-primary/40 bg-background/60 p-3 sm:p-4">
+                <p className="text-xs sm:text-sm text-muted-foreground">Telemetry uptime</p>
+                <p className="text-2xl sm:text-3xl font-semibold text-foreground">99.2%</p>
+                <p className="text-[11px] sm:text-xs text-green-500 mt-1">+0.3% vs last week</p>
               </div>
-              <div className="rounded-2xl border border-border bg-background/60 p-4">
-                <p className="text-sm text-muted-foreground">Capital available</p>
-                <p className="text-3xl font-semibold text-foreground">$640K</p>
-                <p className="text-xs text-muted-foreground mt-1">Across 4 treasury wallets</p>
+              <div className="rounded-2xl border border-border bg-background/60 p-3 sm:p-4">
+                <p className="text-xs sm:text-sm text-muted-foreground">Capital available</p>
+                <p className="text-2xl sm:text-3xl font-semibold text-foreground">$640K</p>
+                <p className="text-[11px] sm:text-xs text-muted-foreground mt-1">Across 4 treasury wallets</p>
               </div>
             </div>
           </CardHeader>
@@ -131,11 +133,11 @@ export function AdminDashboard() {
           <CardHeader className="pb-4">
             <div className="flex items-center gap-2">
               <ShieldCheck className="h-5 w-5 text-primary" />
-              <CardTitle>Operational focus</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Operational focus</CardTitle>
             </div>
-            <CardDescription>3 items need decision support</CardDescription>
+            <CardDescription className="text-xs sm:text-sm">3 items need decision support</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 sm:space-y-4">
             {riskAlerts.map(alert => (
               <div key={alert.id} className="rounded-2xl border border-border/60 bg-muted/40 p-4">
                 <div className="flex items-center justify-between">
@@ -151,19 +153,19 @@ export function AdminDashboard() {
         </Card>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
         {stats.map(stat => {
           const Icon = stat.icon
           return (
             <Card key={stat.label} className="border border-border/60 bg-card/90 backdrop-blur">
-              <CardContent className="space-y-3 pt-6">
-                <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${stat.iconBg}`}>
-                  <Icon className={`h-6 w-6 ${stat.iconColor}`} />
+              <CardContent className="space-y-3 pt-5 sm:pt-6">
+                <div className={`flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-2xl ${stat.iconBg}`}>
+                  <Icon className={`h-5 w-5 sm:h-6 sm:w-6 ${stat.iconColor}`} />
                 </div>
-                  <div>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                  <p className="text-3xl font-semibold text-foreground">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground">{stat.change}</p>
+                <div>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{stat.label}</p>
+                  <p className="text-2xl sm:text-3xl font-semibold text-foreground">{stat.value}</p>
+                  <p className="text-[11px] sm:text-xs text-muted-foreground">{stat.change}</p>
                 </div>
               </CardContent>
             </Card>
@@ -171,17 +173,17 @@ export function AdminDashboard() {
         })}
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-2">
         <Card className="border border-border/60 bg-card">
-          <CardHeader className="flex flex-row items-center justify-between">
+          <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-            <CardTitle>Revenue & User Growth</CardTitle>
-            <CardDescription>Monthly platform metrics</CardDescription>
+              <CardTitle className="text-base sm:text-lg">Revenue & User Growth</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Monthly platform metrics</CardDescription>
             </div>
-            <Button variant="ghost" size="sm" className="text-xs">Export CSV</Button>
+            <Button variant="ghost" size="sm" className="text-[11px] sm:text-xs self-start sm:self-auto">Export CSV</Button>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="pt-2 sm:pt-4">
+            <ResponsiveContainer width="100%" height={240}>
               <LineChart data={revenueData}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="month" stroke="var(--color-muted-foreground)" />
@@ -197,11 +199,11 @@ export function AdminDashboard() {
 
         <Card className="border border-border/60 bg-card">
           <CardHeader>
-            <CardTitle>Investment by Category</CardTitle>
-            <CardDescription>Fund allocation across farm types</CardDescription>
+            <CardTitle className="text-base sm:text-lg">Investment by Category</CardTitle>
+            <CardDescription className="text-xs sm:text-sm">Fund allocation across farm types</CardDescription>
           </CardHeader>
-          <CardContent>
-            <ResponsiveContainer width="100%" height={300}>
+          <CardContent className="pt-2 sm:pt-4">
+            <ResponsiveContainer width="100%" height={240}>
               <BarChart data={investmentByCategory}>
                 <CartesianGrid strokeDasharray="3 3" stroke="var(--color-border)" />
                 <XAxis dataKey="category" stroke="var(--color-muted-foreground)" />
@@ -214,16 +216,16 @@ export function AdminDashboard() {
         </Card>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-[0.8fr_1.2fr]">
         <Card className="border border-border/60 bg-card/80">
-        <CardHeader>
+          <CardHeader>
             <div className="flex items-center gap-2">
               <Activity className="h-5 w-5 text-primary" />
-              <CardTitle>Live activity</CardTitle>
+              <CardTitle className="text-base sm:text-lg">Live activity</CardTitle>
             </div>
-            <CardDescription>Latest events across the network</CardDescription>
+            <CardDescription className="text-xs sm:text-sm">Latest events across the network</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-3 sm:space-y-4">
             {activityFeed.map(item => (
               <div key={item.id} className="rounded-2xl border border-border/60 bg-muted/30 p-4">
                 <div className="flex flex-col">
@@ -237,22 +239,24 @@ export function AdminDashboard() {
         </Card>
 
         <Card className="border border-border/60 bg-card">
-          <CardHeader className="flex flex-row items-center justify-between">
+          <CardHeader className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <CardTitle>Pending Withdrawals</CardTitle>
-          <CardDescription>Awaiting approval ({pendingWithdrawals.length})</CardDescription>
+              <CardTitle className="text-base sm:text-lg">Pending Withdrawals</CardTitle>
+              <CardDescription className="text-xs sm:text-sm">Awaiting approval ({pendingWithdrawals.length})</CardDescription>
             </div>
-            <Button size="sm" variant="secondary" className="rounded-full text-xs">Prioritize queue</Button>
-        </CardHeader>
+            <Button size="sm" variant="secondary" className="rounded-full text-[11px] sm:text-xs self-start sm:self-auto">
+              Prioritize queue
+            </Button>
+          </CardHeader>
           <CardContent className="space-y-3">
             {pendingWithdrawals.map(withdrawal => (
-              <div key={withdrawal.id} className="flex items-center justify-between rounded-2xl border border-border/60 bg-muted/30 p-4">
+              <div key={withdrawal.id} className="flex flex-col sm:flex-row sm:items-center sm:justify-between rounded-2xl border border-border/60 bg-muted/30 p-3 sm:p-4 gap-3">
                 <div>
-                  <p className="font-medium text-foreground">{withdrawal.investor}</p>
-                  <p className="text-sm text-muted-foreground">Requested: {withdrawal.requested}</p>
+                  <p className="font-medium text-sm sm:text-base text-foreground">{withdrawal.investor}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">Requested: {withdrawal.requested}</p>
                 </div>
                 <div className="text-right">
-                  <p className="text-lg font-semibold text-foreground">${withdrawal.amount.toLocaleString()}</p>
+                  <p className="text-base sm:text-lg font-semibold text-foreground">${withdrawal.amount.toLocaleString()}</p>
                   <Badge variant={withdrawal.status === 'Escalated' ? 'destructive' : 'secondary'} className="rounded-full">
                     {withdrawal.status}
                   </Badge>
